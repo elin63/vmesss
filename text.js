@@ -43,11 +43,11 @@ if (jshb_cookie) {
         $.done()
     }
 }
-Object.keys(jshb_cookies).forEach((item) => {
-    if (jshb_cookies[item] && !jshb_cookies[item].startsWith("#")) {
-        jshb_cookieArr.push(jshb_cookies[item])
-    }
-})
+// Object.keys(jshb_cookies).forEach((item) => {
+//     if (jshb_cookies[item] && !jshb_cookies[item].startsWith("#")) {
+//         jshb_cookieArr.push(jshb_cookies[item])
+//     }
+// })
 
 // !(async () => {
 //      if (typeof $request !== "undefined") {
