@@ -10,12 +10,12 @@ shaolin-kongfu
 [rewrite_local]
 
 #中青看点每日收益查询
-https://kandian.wkandian.com/v17/NewTask/getTaskList.json 重写目标 https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/jshb/jshb_today_score.js
+https://kandian.wkandian.com/v17/NewTask/getTaskList.json 重写目标 https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_today_score.js
 [MITM]
 hostname = kandian.wkandian.com
 */
 
-const $ = new Env("中青计时红包");
+const $ = new Env("中青看点收益统计");
 const notify = $.isNode() ? require('./sendNotify') : '';
 message = ""
 let jshb_cookie= $.isNode() ? (process.env.jshb_cookie ? process.env.jshb_cookie : "") : ($.getdata('jshb_cookie') ? $.getdata('jshb_cookie') : "")
@@ -144,9 +144,9 @@ function today_score(jshb_cookie1,nickname1,timeout = 0) {
 }
 
 
-//kd.youth.cn/h5/20200612makeMoney
+
 async function getjshb_cookie() {
-    if ($request.url.match(/\/kd.youth.cn\/h5\/20200612makeMoney/)) {
+    if ($request.url.match(/\/kandian.wkandian.com\/v17\/NewTask\/getTaskList/)) {
           bodyVal1 = $request.url.split('?')[1]
           bodyVal2 = bodyVal1.split('&token')[0]
           bodyVal3 = bodyVal2.split('&zqkey=')[1]
