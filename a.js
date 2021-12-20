@@ -22,6 +22,42 @@ let jshb_cookie= $.isNode() ? (process.env.jshb_cookie ? process.env.jshb_cookie
 let jshb_cookieArr = []
 let jshb_cookies = ""
 
+!(async () => {
+     if (typeof $request !== "undefined") {
+    getjshb_cookie()
+     $.done()
+ }else {
+         console.log(`共${jshb_cookieArr.length}个cookie`)
+         for (let k = 0; k < jshb_cookieArr.length; k++) {
+             $.message = ""
+             bodyVal = jshb_cookieArr[k].split('&uid=')[0];
+             cookie = bodyVal.replace(/zqkey=/, "cookie=")
+             cookie_id = cookie.replace(/zqkey_id=/, "cookie_id=")
+             jshb_cookie1 = cookie_id + '&' + bodyVal
+             jshb_cookie2 = 'uid='+jshb_cookieArr[k].split('&uid=')[1] + '&'+ bodyVal
+             //待处理cookie
+             console.log(`${jshb_cookie1}`)
+             console.log(`--------第 ${k + 1} 个账号收益查询中--------\n`)
+             await nickname(jshb_cookie2)
+             if ($.message.length != 0) {
+                 message += "账号" + (k + 1) + "：  \n" + $.message + " \n"
+             }
+             await $.wait(4000);
+             console.log("\n\n")
+         }
+
+
+         if (message.length != 0) {
+             await notify ? notify.sendNotify("中青看点收益查询", `${message}\n\n 吹水群：https://t.me/ShaolinTemple2`) :
+                 $.msg($.name, "中青看点收益查询", `${message}\n\n吹水群：https://t.me/ShaolinTemple2`);
+         } else if ($.isNode()) {
+             await notify.sendNotify("中青看点收益查询", `${message}\n\n吹水群：https://t.me/ShaolinTemple2`);
+         }
+     }
+     })()
+    .catch((e) => $.logErr(e))
+    .finally(() => $.done())
+
 async function getjshb_cookie() {
     if ($request.url.match(/\/kd.youth.cn\/h5\/20200612makeMoney/)) {
           bodyVal1 = $request.url.split('?')[1]
