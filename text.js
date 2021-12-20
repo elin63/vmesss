@@ -58,7 +58,7 @@ Object.keys(jshb_cookies).forEach((item) => {
          for (let k = 0; k < jshb_cookieArr.length; k++) {
              $.message = ""
              bodyVal = jshb_cookieArr[k].split('&uid=')[0];
-             cookie = bodyVal.replace(/jshbkey=/, "cookie=")
+             cookie = bodyVal.replace(/zqkey=/, "cookie=")
              cookie_id = cookie.replace(/jshbkey_id=/, "cookie_id=")
              jshb_cookie1 = cookie_id + '&' + bodyVal
              jshb_cookie2 = 'uid='+jshb_cookieArr[k].split('&uid=')[1] + '&'+ bodyVal
