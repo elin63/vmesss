@@ -22,27 +22,27 @@ let jshb_cookie= $.isNode() ? (process.env.jshb_cookie ? process.env.jshb_cookie
 let jshb_cookieArr = []
 let jshb_cookies = ""
 
-if (jshb_cookie) {
-    if (jshb_cookie.indexOf("@") == -1 && jshb_cookie.indexOf("@") == -1) {
-        jshb_cookieArr.push(jshb_cookie)
-    } else if (jshb_cookie.indexOf("@") > -1) {
-        jshb_cookies = jshb_cookie.split("@")
-    } else if (process.env.jshb_cookie && process.env.jshb_cookie.indexOf('@') > -1) {
-        jshb_cookieArr = process.env.jshb_cookie.split('@');
-        console.log(`您选择的是用"@"隔开\n`)
-    }
-} else if($.isNode()){
-    var fs = require("fs");
-    jshb_cookie = fs.readFileSync("jshb_cookie.txt", "utf8");
-    if (jshb_cookie !== `undefined`) {
-        jshb_cookies = jshb_cookie.split("\n");
-    } else {
-        $.msg($.name, '【提示】进入点击右下角"任务图标"，再跑一次脚本', '不知道说啥好', {
-            "open-url": "给您劈个叉吧"
-        });
-        $.done()
-    }
-}
+// if (jshb_cookie) {
+//     if (jshb_cookie.indexOf("@") == -1 && jshb_cookie.indexOf("@") == -1) {
+//         jshb_cookieArr.push(jshb_cookie)
+//     } else if (jshb_cookie.indexOf("@") > -1) {
+//         jshb_cookies = jshb_cookie.split("@")
+//     } else if (process.env.jshb_cookie && process.env.jshb_cookie.indexOf('@') > -1) {
+//         jshb_cookieArr = process.env.jshb_cookie.split('@');
+//         console.log(`您选择的是用"@"隔开\n`)
+//     }
+// } else if($.isNode()){
+//     var fs = require("fs");
+//     jshb_cookie = fs.readFileSync("jshb_cookie.txt", "utf8");
+//     if (jshb_cookie !== `undefined`) {
+//         jshb_cookies = jshb_cookie.split("\n");
+//     } else {
+//         $.msg($.name, '【提示】进入点击右下角"任务图标"，再跑一次脚本', '不知道说啥好', {
+//             "open-url": "给您劈个叉吧"
+//         });
+//         $.done()
+//     }
+// }
 
 // async function getjshb_cookie() {
 //     if ($request.url.match(/\/kd.youth.cn\/h5\/20200612makeMoney/)) {
