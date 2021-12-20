@@ -59,7 +59,7 @@ Object.keys(jshb_cookies).forEach((item) => {
              $.message = ""
              bodyVal = jshb_cookieArr[k].split('&uid=')[0];
              cookie = bodyVal.replace(/zqkey=/, "cookie=")
-             cookie_id = cookie.replace(/jshbkey_id=/, "cookie_id=")
+             cookie_id = cookie.replace(/zqkey_id=/, "cookie_id=")
              jshb_cookie1 = cookie_id + '&' + bodyVal
              jshb_cookie2 = 'uid='+jshb_cookieArr[k].split('&uid=')[1] + '&'+ bodyVal
              //待处理cookie
