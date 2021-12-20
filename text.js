@@ -10,12 +10,12 @@ shaolin-kongfu
 [rewrite_local]
 
 #中青看点每日收益查询
-https://kandian.wkandian.com/v17/NewTask/getTaskList.json 重写目标 https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/zq/zq_today_score.js
+https://kandian.wkandian.com/v17/NewTask/getTaskList.json 重写目标 https://raw.githubusercontent.com/shaolin-kongfu/js_scripts/main/jshb/jshb_today_score.js
 [MITM]
 hostname = kandian.wkandian.com
 */
 
-const $ = new Env("中青看点收益统计");
+const $ = new Env("中青计时红包");
 const notify = $.isNode() ? require('./sendNotify') : '';
 message = ""
 let jshb_cookie= $.isNode() ? (process.env.jshb_cookie ? process.env.jshb_cookie : "") : ($.getdata('jshb_cookie') ? $.getdata('jshb_cookie') : "")
@@ -43,110 +43,9 @@ if (jshb_cookie) {
         $.done()
     }
 }
-// Object.keys(jshb_cookies).forEach((item) => {
-//     if (jshb_cookies[item] && !jshb_cookies[item].startsWith("#")) {
-//         jshb_cookieArr.push(jshb_cookies[item])
-//     }
-// })
-
-// !(async () => {
-//      if (typeof $request !== "undefined") {
-//     getjshb_cookie()
-//      $.done()
-//  }else {
-//          console.log(`共${jshb_cookieArr.length}个cookie`)
-//          for (let k = 0; k < jshb_cookieArr.length; k++) {
-//              $.message = ""
-//              bodyVal = jshb_cookieArr[k].split('&uid=')[0];
-//              cookie = bodyVal.replace(/zqkey=/, "cookie=")
-//              cookie_id = cookie.replace(/zqkey_id=/, "cookie_id=")
-//              jshb_cookie1 = cookie_id + '&' + bodyVal
-//              jshb_cookie2 = 'uid='+jshb_cookieArr[k].split('&uid=')[1] + '&'+ bodyVal
-//              //待处理cookie
-//              console.log(`${jshb_cookie1}`)
-//              console.log(`--------第 ${k + 1} 个账号收益查询中--------\n`)
-//              await nickname(jshb_cookie2)
-//              if ($.message.length != 0) {
-//                  message += "账号" + (k + 1) + "：  \n" + $.message + " \n"
-//              }
-//              await $.wait(4000);
-//              console.log("\n\n")
-//          }
-
-
-//          if (message.length != 0) {
-//              await notify ? notify.sendNotify("中青看点收益查询", `${message}\n\n 吹水群：https://t.me/ShaolinTemple2`) :
-//                  $.msg($.name, "中青看点收益查询", `${message}\n\n吹水群：https://t.me/ShaolinTemple2`);
-//          } else if ($.isNode()) {
-//              await notify.sendNotify("中青看点收益查询", `${message}\n\n吹水群：https://t.me/ShaolinTemple2`);
-//          }
-//      }
-//      })()
-//     .catch((e) => $.logErr(e))
-//     .finally(() => $.done())
-
-// function nickname(jshb_cookie2,timeout = 0) {
-//     return new Promise((resolve) => {
-//         let url = {
-//             url : 'https://kandian.wkandian.com/v17/NewTask/getSign.json?'+ jshb_cookie2,
-//             headers : {
-//     'Host': 'kandian.wkandian.com'
-// },
-//             }
-//         $.get(url, async (err, resp, data) => {
-//             try {
-
-//                 const result = JSON.parse(data)
-//                 if(result.success == true){
-//                     console.log('\n昵称:'+result.items.user.nickname)
-//                     nickname1 =result.items.user.nickname
-//                     await $.wait(1000);
-//                     await today_score(jshb_cookie1,nickname1)
-                  
-            
-//                 }else{
-//                      console.log(result)
-//                 }
-//             } catch (e) {
-//             } finally {
-//                 resolve()
-//             }
-//             },timeout)
-//     })
-// }
-// function today_score(jshb_cookie1,nickname1,timeout = 0) {
-//     return new Promise((resolve) => {
-//         let url = {
-//             url : 'https://kandian.wkandian.com/wap/user/balance?'+ jshb_cookie1,
-//             headers : {
-//     'Host': 'kandian.wkandian.com'
-// },
-//             }
-//         $.get(url, async (err, resp, data) => {
-//             try {
-
-//                 const result = JSON.parse(data)
-//                 if(result.status == 0){
-//                     console.log('\n今日收益总计:'+result.user.today_score)
-//                     console.log('\n当前金币总数:'+result.user.score)
-//                     console.log('\n折合人民币总数:'+result.user.money)
-//                     $.message = `昵称:${nickname1}\n今日收益总计:${result.user.today_score}金币\n 当前金币总数:${result.user.score} \n 折合人民币总数:${result.user.money}元`
-//                     //$.msg($.name, "", `今日收益总计:${result.user.today_score}金币\n 当前金币总数:${result.user.score} \n 折合人民币总数:${result.user.money}元`);
-//                 }else{
-//                      console.log(result)
-//                 }
-//             } catch (e) {
-//             } finally {
-//                 resolve()
-//             }
-//             },timeout)
-//     })
-// }
-
-
 
 // async function getjshb_cookie() {
-//     if ($request.url.match(/\/kandian.wkandian.com\/v17\/NewTask\/getTaskList/)) {
+//     if ($request.url.match(/\/kd.youth.cn\/h5\/20200612makeMoney/)) {
 //           bodyVal1 = $request.url.split('?')[1]
 //           bodyVal2 = bodyVal1.split('&token')[0]
 //           bodyVal3 = bodyVal2.split('&zqkey=')[1]
