@@ -149,7 +149,7 @@ async function getjshb_cookie() {
     if ($request.url.match(/\/kd.youth.cn\/h5\/20200612makeMoney/)) {
           bodyVal1 = $request.url.split('?')[1]
           bodyVal2 = bodyVal1.split('&token')[0]
-          bodyVal3 = bodyVal2.split('&jshbkey=')[1]
+          bodyVal3 = bodyVal2.split('&zqkey=')[1]
           bodyVal4 = bodyVal2.split('&uid=')[1]
           bodyVal5 = bodyVal4.split('&version_code=')[0]
           bodyVal =  'jshbkey='+ bodyVal3 + '&uid='+ bodyVal5
