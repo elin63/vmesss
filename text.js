@@ -152,7 +152,7 @@ async function getjshb_cookie() {
           bodyVal3 = bodyVal2.split('&zqkey=')[1]
           bodyVal4 = bodyVal2.split('&uid=')[1]
           bodyVal5 = bodyVal4.split('&version_code=')[0]
-          bodyVal =  'jshbkey='+ bodyVal3 + '&uid='+ bodyVal5
+          bodyVal =  'zqkey='+ bodyVal3 + '&uid='+ bodyVal5
         if (jshb_cookie) {
             if (jshb_cookie.indexOf(bodyVal5) > -1) {
                 $.log("此cookie已存在，本次跳过")
