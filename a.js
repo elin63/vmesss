@@ -33,59 +33,59 @@ const qdheader={
       console.log(bodyVal)
      $.done()
  }
-// if (zqqdbody) {
-//     if (zqqdbody.indexOf("&") == -1) {
-//         zqqdbodyArr.push(zqqdbody)
-//     } else if (zqqdbody.indexOf("&") > -1) {
-//         zqqdbodys = zqqdbody.split("&")
-//     } else if (process.env.zqqdbody && process.env.zqqdbody.indexOf('&') > -1) {
-//         zqqdbodyArr = process.env.zqqdbody.split('&');
-//         console.log(`您选择的是用"&"隔开\n`)
-//     }
-// } else if($.isNode()){
-//     var fs = require("fs");
-//     zqqdbody = fs.readFileSync("zqqdbody.txt", "utf8");
-//     if (zqqdbody !== `undefined`) {
-//         zqqdbodys = zqqdbody.split("\n");
-//     } else {
-//         $.msg($.name, '【提示】请签到以获取body，明天再跑一次脚本测试', '不知道说啥好', {
-//             "open-url": "给您劈个叉吧"
-//         });
-//         $.done()
-//     }
-// }
-// Object.keys(zqqdbodys).forEach((item) => {
-//     if (zqqdbodys[item] && !zqqdbodys[item].startsWith("#")) {
-//         zqqdbodyArr.push(zqqdbodys[item])
-//     }
-// })
+if (zqqdbody) {
+    if (zqqdbody.indexOf("&") == -1) {
+        zqqdbodyArr.push(zqqdbody)
+    } else if (zqqdbody.indexOf("&") > -1) {
+        zqqdbodys = zqqdbody.split("&")
+    } else if (process.env.zqqdbody && process.env.zqqdbody.indexOf('&') > -1) {
+        zqqdbodyArr = process.env.zqqdbody.split('&');
+        console.log(`您选择的是用"&"隔开\n`)
+    }
+} else if($.isNode()){
+    var fs = require("fs");
+    zqqdbody = fs.readFileSync("zqqdbody.txt", "utf8");
+    if (zqqdbody !== `undefined`) {
+        zqqdbodys = zqqdbody.split("\n");
+    } else {
+        $.msg($.name, '【提示】请签到以获取body，明天再跑一次脚本测试', '不知道说啥好', {
+            "open-url": "给您劈个叉吧"
+        });
+        $.done()
+    }
+}
+Object.keys(zqqdbodys).forEach((item) => {
+    if (zqqdbodys[item] && !zqqdbodys[item].startsWith("#")) {
+        zqqdbodyArr.push(zqqdbodys[item])
+    }
+})
 
-// !(async () => {
+!(async () => {
 
 
-//         console.log(`共${zqqdbodyArr.length}个账号`)
-// 	        for (let k = 0; k < zqqdbodyArr.length; k++) {
-//             $.message = ""
-//             zqqdbody1 = zqqdbodyArr[k];
-//             console.log(`${zqqdbody1}`)
-//             console.log(`--------账号 ${k+1} 签到任务执行中--------\n`)
-//             await jcqd()
-//                 await $.wait(1000);
-//             console.log("\n\n")
-//         }
+        console.log(`共${zqqdbodyArr.length}个账号`)
+	        for (let k = 0; k < zqqdbodyArr.length; k++) {
+            $.message = ""
+            zqqdbody1 = zqqdbodyArr[k];
+            console.log(`${zqqdbody1}`)
+            console.log(`--------账号 ${k+1} 签到任务执行中--------\n`)
+            await jcqd()
+                await $.wait(1000);
+            console.log("\n\n")
+        }
 
-//         date = new Date()
-//         if ($.isNode() &&date.getHours() == 11 && date.getMinutes()<10) {
-//             if (message.length != 0) {
-//                    await notify.sendNotify("中青看点签到", `${message}\n\n shaolin-kongfu`);
-//             }
-//         } else {
-//             $.msg($.name, "",  message)
-//         }
+        date = new Date()
+        if ($.isNode() &&date.getHours() == 11 && date.getMinutes()<10) {
+            if (message.length != 0) {
+                   await notify.sendNotify("中青看点签到", `${message}\n\n shaolin-kongfu`);
+            }
+        } else {
+            $.msg($.name, "",  message)
+        }
 
-//     })()
-//     .catch((e) => $.logErr(e))
-//     .finally(() => $.done())
+    })()
+    .catch((e) => $.logErr(e))
+    .finally(() => $.done())
 
 //获取签到body
 function getzqqdbody() {
