@@ -102,7 +102,7 @@ function getzqqdbody() {
                 $.msg($.name, "获取第" + bodys.length + "个签到请求: 成功🎉", ``)
             }
         } else {
-            $.setdata(bodyVal, 'zqqdbody');
+            $.setdata(bodyVal, '中青签到body');
             $.log(`${$.name}获取签到: 成功, zqqdbodys: ${bodyVal}`);
             $.msg($.name, `获取第一个签到请求: 成功🎉`, ``)
         }
